@@ -1,0 +1,12 @@
+{
+  "/admin/announcements/page": "app/admin/announcements/page.js",
+  "/admin/billing/page": "app/admin/billing/page.js",
+  "/admin/screens/page": "app/admin/screens/page.js",
+  "/api/companies/route": "app/api/companies/route.js",
+  "/api/invoices/route": "app/api/invoices/route.js",
+  "/api/movements/route": "app/api/movements/route.js",
+  "/calendar/page": "app/calendar/page.js",
+  "/companies/page": "app/companies/page.js",
+  "/page": "app/page.js",
+  "/public/board/page": "app/public/board/page.js"
+}

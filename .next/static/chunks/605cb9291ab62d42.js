@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,88569,o=>{"use strict";o.i(75043),o.i(2148);let t=Error("Cannot find module '@/components/dashboard/MovementCard'");throw t.code="MODULE_NOT_FOUND",t}]);

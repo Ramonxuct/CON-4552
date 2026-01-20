@@ -1,0 +1,3 @@
+module.exports=[18622,(a,b,c)=>{b.exports=a.x("next/dist/compiled/next-server/app-page-turbo.runtime.prod.js",()=>require("next/dist/compiled/next-server/app-page-turbo.runtime.prod.js"))},92545,(a,b,c)=>{"use strict";b.exports=a.r(18622)},70971,(a,b,c)=>{"use strict";b.exports=a.r(92545).vendored["react-ssr"].ReactJsxRuntime},82563,(a,b,c)=>{"use strict";b.exports=a.r(92545).vendored["react-ssr"].React},46483,a=>{"use strict";a.i(70971),a.i(82563);let b=Error("Cannot find module '@/components/dashboard/MovementCard'");throw b.code="MODULE_NOT_FOUND",b}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__dec93b48._.js.map

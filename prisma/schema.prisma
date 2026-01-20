@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id           String   @id @default(uuid())
+  name         String
+  cif          String   @unique
+  contact_name String?
+  email        String?
+  phone        String?
+  color        String?  @default("#8A1D5B")
+  logo         String?
+  fleet_size   Int      @default(0)
+  created_at   DateTime @default(now())
+
+  buses     Bus[]
+  movements Movement[]
+  invoices  Invoice[]
+}
+
+model Route {
+  id                 String   @id @default(uuid())
+  origin             String
+  destination        String
+  distance_km        Float
+  base_price         Float    @default(0.0)
+  estimated_duration String // stored as "HH:mm" string for simplicity or Int minutes
+  created_at         DateTime @default(now())
+
+  movements Movement[]
+}
+
+model Bus {
+  id            String   @id @default(uuid())
+  license_plate String   @unique
+  bus_type      String
+  company_id    String
+  company       Company  @relation(fields: [company_id], references: [id])
+  created_at    DateTime @default(now())
+
+  movements Movement[]
+}
+
+model Movement {
+  id             String   @id @default(uuid())
+  type           String // 'arrival' | 'departure'
+  status         String   @default("scheduled") // 'scheduled', 'arrived', 'delayed', 'cancelled'
+  scheduled_time DateTime
+  actual_time    DateTime?
+  bay_number     String?
+  
+  bus_id         String
+  bus            Bus      @relation(fields: [bus_id], references: [id])
+  
+  route_id       String
+  route          Route    @relation(fields: [route_id], references: [id])
+  
+  company_id     String
+  company        Company  @relation(fields: [company_id], references: [id])
+
+  created_at     DateTime @default(now())
+}
+
+model Invoice {
+  id           String   @id @default(uuid())
+  amount       Float
+  date         DateTime @default(now())
+  status       String   @default("Pendiente") // 'Pagada', 'Pendiente', 'Enviada'
+  concept      String?
+  pdf_url      String?
+  
+  company_id   String
+  company      Company  @relation(fields: [company_id], references: [id])
+  
+  created_at   DateTime @default(now())
+}
